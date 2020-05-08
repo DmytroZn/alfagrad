@@ -4,9 +4,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 class LastProjects(models.Model):
-    title = models.CharField(max_length=255, verbose_name='Название')
+    title = models.CharField(max_length=255, unique=True, verbose_name='Название')
     content = models.TextField(verbose_name='Описание')
-    img = models.ImageField(upload_to='static/images/', max_length=100)
+    img = models.ImageField(upload_to='static/images/last_projecs/', max_length=100)
 
     def delete(self, *args, **kwargs):
         self.img.delete()
@@ -23,12 +23,12 @@ class LastProjects(models.Model):
 class BaseLevel(models.Model):
     
     title = models.CharField(verbose_name='Название 2 ' ,max_length=100)
-    description = models.TextField(verbose_name='Описание', max_length=400, help_text='Возможно ввести только до 400 символов')
-    first_picture = models.ImageField(verbose_name='фотография 1', upload_to='static/images/', max_length=100)
+    description = models.TextField(verbose_name='Описание')
+    first_picture = models.ImageField(verbose_name='фотография 1', upload_to='static/images/base_level/', max_length=100)
     first_text = models.CharField(verbose_name='первый скрипт', max_length=100)
-    second_picture = models.ImageField(verbose_name='фотография 2', upload_to='static/images/', max_length=100)
+    second_picture = models.ImageField(verbose_name='фотография 2', upload_to='static/images/base_level/', max_length=100)
     second_text = models.CharField(verbose_name='второй скрипт', max_length=100)
-    third_picture = models.ImageField(verbose_name='фотография 3', upload_to='static/images/', max_length=100)
+    third_picture = models.ImageField(verbose_name='фотография 3', upload_to='static/images/base_level/', max_length=100)
     third_text = models.CharField(verbose_name='третий скрипт', max_length=100)
 
 

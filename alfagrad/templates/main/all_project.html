@@ -1,0 +1,98 @@
+{% extends 'main/index.html' %}
+{% load static %}
+
+        {% block content %}
+           
+
+
+            <section class="section context-dark section-jumbotron bg-cover" style="background: url(/../static/images/bg-image.jpg) #151515">
+              <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="" width="86" height="104"/></a>
+              </div>
+                <div class="section-fullheight">
+                  
+                  <div class="section-fullheight-inner section-md text-center text-lg-left">
+                    <div class="container">
+
+
+
+
+
+
+                        <div class="container container-custom-width">
+                          <h2 class="text-center">Наши последнии проэкты</h2>
+                
+                          {% if objs %}
+                          <div class="row row-custom-width row-30 row-xxl-100 row-flex">
+                            {% for obj in objs %}
+                            <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0.2s">
+                              <div class="project-grid" style="background-image: url(../{{obj.img}});">
+                                <div class="inner"><img src="../{{obj.img}}" alt=""/>
+                                  <h5 class="title text-capitalize font-weight-medium"><a href="../view/{{obj.title}}">{{ obj.title }}</a></h5>
+                                  <p class="font-weight-regular exeption">{{obj.content|truncatechars:"75"}}</p><a class="button button-default" href="../view/{{obj.title}}">Посмотреть</a>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                        {% else %}
+                        <h3 class="text-center">Пока что ожидается</h3>
+                        {% endif %}
+
+
+
+
+
+                       
+                     
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container container-custom-width">
+          <h2 class="text-center">Наши последнии проэкты</h2>
+
+          {% if objs %}
+          <div class="row row-custom-width row-30 row-xxl-100 row-flex">
+            {% for obj in objs %}
+            <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0.2s">
+              <div class="project-grid" style="background-image: url(../{{obj.img}});">
+                <div class="inner"><img src="../{{obj.img}}" alt=""/>
+                  <h5 class="title text-capitalize font-weight-medium"><a href="#">{{ obj.title }}</a></h5>
+                  <p class="font-weight-regular exeption">{{obj.content|truncatechars:"75"}}</p><a class="button button-default" href="../view/{{obj.title}}">Посмотреть</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="button-wrap-1 text-center"><a class="button button-default" href="#">Посмотреть все проэкты</a></div>
+        </div>
+        {% else %}
+        <h3 class="text-center">Пока что ожидается</h3>
+        {% endif %}
