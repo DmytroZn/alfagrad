@@ -1,0 +1,201 @@
+{% load static %}
+<!-- Price box minimal--><!DOCTYPE html>
+<html class="wide wow-animation" lang="ru-Ru">
+  <head>
+    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta name="keywords" content="ремонт, Киев, забор, установка">
+    <meta name="description" content="ремонт, Киев, забор, установка">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <link rel="icon" href="{% static 'images/favicon.ico'%}" type="image/x-icon">
+    <link rel="canonical" href="https://znaktop.com/">
+    <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900%7CRoboto:300,300i,400,400i,500,500i,700,700i,900,900i"> -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static '/css/fonts.css'%}">
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="preloader-body">
+          <div class="cssload-speeding-wheel"></div>
+          <p>Загрузка...</p>
+      </div>
+    </div>
+    <div class="page">
+      <section class="section section-relative section-header">
+        <!-- Page Header-->
+        <header class="section page-header header-absolute">
+          <!-- RD Navbar-->
+          <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-aside" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+
+              <div class="rd-navbar-main-outer">
+                <div class="rd-navbar-main">
+                  <!-- RD Navbar Panel-->
+                  <div class="rd-navbar-panel">
+                    <!-- RD Navbar Toggle-->
+                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                    <!-- RD Navbar Brand-->
+                    <div class="rd-navbar-brand"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-dark" src="{% static 'images/logo-alfa1.png'%}" alt="" width="232" height="67"/></a>
+                    </div>
+                  </div>
+                  <div class="rd-navbar-nav-wrap">
+                    <!-- RD Navbar Nav-->
+                    <ul class="rd-navbar-nav">
+                      {% url 'main' as main_url %}
+                      <li class="rd-nav-item {% if main_url == request.path%} active {% endif %}"><a class="rd-nav-link" href="{{main_url}}">Главная</a>
+                      </li>
+                      {% url 'about_us' as about_us_url %}
+                      <li class="rd-nav-item {% if about_us_url == request.path %} active {% endif %} "><a class="rd-nav-link" href="{{about_us_url}}">Про нас</a>
+                      </li>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">Заборы</a>
+                      </li>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">Контакты</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <!-- Preview section-->
+        {% block content %}
+        <section class="section context-dark section-jumbotron bg-cover" style="background: url(../static/images/bg-image.jpg) #151515">
+          <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="" width="86" height="104"/></a>
+        
+          </div>
+          <div class="section-fullheight">
+            
+            <div class="section-fullheight-inner section-md text-center text-lg-left">
+              <div class="container">
+                <div class="row justify-content-center justify-content-lg-start">
+                  <div class="col-md-10 offset-lg-1 col-lg-8 offset-xl-1 col-xl-9 offset-xxl-2 col-xxl-7">
+                    <div class="jumbotron-custom-1">
+                      <div class="text-1 font-weight-medium"></div>
+                      
+                      <h1 class="title text-decorative">АЛЬФАГРАД</h1>
+                      <h3 class="">{{base_level.title}}</h3>
+                      
+                 
+                      
+            
+                      <p class="big-2 text-white-darken"> {{ base_level.description|truncatechars:"500" }}</p>
+                      {% if base_level.description %}
+                      <a href="{% url 'about_us' %}"><p>чатать дальше</p></a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="project-list">
+            <li class="bg-image" width="730" height="213" style="background-image: url(../{{base_level.first_picture}})"><a href="#"><h1>{{ base_level.first_text }}</h1></a></li>
+            <li class="bg-image" style="background-image: url(../{{base_level.second_picture}})"><a href="#"><h1>{{ base_level.second_text }}</h1></a></li>
+            <li class="bg-image" style="background-image: url(../{{base_level.third_picture}})"><a href="#"><h1>{{ base_level.third_text }}</h1></a></li>
+          </ul>
+          
+        </section>
+        
+      </section>
+      <!-- Portfolio-->
+      <section class="section section-lg bg-default section-lined">
+        <div class="container container-custom-width">
+          <h2 class="text-center">Наши последниие  проэкты</h2>
+          {% if objs %}
+          <div class="row row-custom-width row-30 row-xxl-100 row-flex">
+            {% for obj in objs %}
+            <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0.2s">
+              <div class="project-grid" width="518" height="373" style="background-image: url(../{{obj.img}});">
+                <div class="inner">
+                  <h5 class="title text-capitalize font-weight-medium"><a href="../view/{{obj.title}}"></a>{{ obj.title }}</h5>
+                  <p class="font-weight-regular exeption">{{obj.content|truncatechars:"75"}}</p><a class="button button-default" href="../view/{{obj.title}}">Посмотреть</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="button-wrap-1 text-center"><a class="button button-default" href="{% url 'all_projects' %}">Посмотреть все проэкты</a></div>
+        </div>
+        {% else %}
+        <h3 class="text-center">Пока что ожидается</h3>
+        {% endif %}
+      </section>
+      {% endblock %}
+         <div class="pre-footer-classic bg-gray-700 context-dark">
+        <div class="container">
+          <div class="row row-30 justify-content-lg-between">
+            <div class="col-sm-6 col-lg-3 col-xl-3">
+              <h5>Местоположение</h5>
+              <ul class="list list-sm">
+                <li>
+                  <p>{{location.country}}</p>
+                </li>
+                <li>
+                  <p>{{location.index}}, {{location.city}},</p>
+                </li>
+                <li>
+                  <p>{{location.street}}</p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-lg-4 col-xl-3">
+              <h5>Контакты</h5>
+              {% for contact in contacts %}
+              {% if contact.phone %}
+              <dl class="list-terms-custom">
+                <dt>Тел. </dt>
+                <dd><a class="link-default" href="tel:#">{{contact.phone}}</a></dd>
+              </dl>
+              {% endif %}
+              {% if contact.email %}
+              <dl class="list-terms-custom">
+                <dt>Email.</dt>
+                <dd><a class="link-default" href="mailto:#">{{contact.email}}</a></dd>
+              </dl>
+              {% endif %}
+              {% endfor %}
+        
+            </div>
+            <div class="col-lg-4">
+              <h5>Есть вопросы? Пишите</h5>
+              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                <div class="form-wrap form-wrap-icon">
+                  <div class="form-icon mdi mdi-email-outline"></div>
+                  <input class="form-input" id="footer-email" type="email" name="email" data-constraints="@Email @Required">
+                  <label class="form-label" for="footer-email">E-mail</label>
+                </div>
+                <div class="button-wrap">
+                  <button class="button button-default button-invariable" type="submit">Отправить</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="section footer-classic context-dark text-center">
+        <div class="container">
+          <div class="row row-15 justify-content-lg-between">
+            <div class="col-lg-4 col-xl-3 text-lg-left">
+              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved. Design by <a href="https://www.templatemonster.com">TemplateMonster</a></p>
+            </div>
+            <div class="col-lg-5 col-xl-6">
+              <ul class="list-inline list-inline-lg text-uppercase">
+                <li><a href="{{about_us_url}}">Про нас</a></li>
+                <li><a href="{% url 'all_projects' %}">Наши проэкты</a></li>
+                <!-- <li><a href="#">Blog</a></li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+    <script src="{% static '/js/core.min.js'%}"></script>
+    <script src="{% static '/js/script.js'%}"></script>
+    <!-- coded by Drel-->
+  </body>
+</html>
+

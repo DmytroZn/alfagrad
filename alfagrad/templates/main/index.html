@@ -1,28 +1,28 @@
 {% load static %}
-<!-- Price box minimal--><!DOCTYPE html>
-<html class="wide wow-animation" lang="ru-Ru">
+<!DOCTYPE html>
+<html class="" lang="ru">
   <head>
     <title>{{title}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <meta name="keywords" content="ремонт, Киев, забор, установка">
-    <meta name="description" content="ремонт, Киев, забор, установка">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="установка забора, строительство, Киев, киевская область, забор">
+    <meta name="description" content="{{description}}">
     <link rel="icon" href="{% static 'images/favicon.ico'%}" type="image/x-icon">
-    <link rel="canonical" href="https://znaktop.com/">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900%7CRoboto:300,300i,400,400i,500,500i,700,700i,900,900i">
+    <!-- <link rel="canonical" href="https://znaktop.com/" data-baseprotocol="https:" data-basehost="znaktop.com">> -->
+    <link rel="alternate" href="https://znaktop.com/" hreflang="x-default">
+    <!-- <link rel="alternate" href="https://znaktop.com/" hreflang="ru"> -->
+
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:type" content="website">
+    <!-- <meta property="og:url" content="https://znaktop.com/"> -->
+    <meta property="og:image" content="{% static '/css/images/unnamed.jpg' %}">
+
     <link rel="stylesheet" href="{% static '/css/bootstrap.css'%}">
     <link rel="stylesheet" href="{% static '/css/fonts.css'%}">
     <link rel="stylesheet" href="{% static '/css/style.css'%}">
   </head>
   <body>
-    <div class="preloader">
-      <div class="preloader-body">
-          <div class="cssload-speeding-wheel"></div>
-         <p>Загрузка...</p>
-      </div>
-    </div>
-    <div class="page">
       <section class="section section-relative section-header">
         <!-- Page Header-->
         <header class="section page-header header-absolute">
@@ -63,7 +63,7 @@
         <!-- Preview section-->
         {% block content %}
         <section class="section context-dark section-jumbotron bg-cover" style="background: url(../static/images/bg-image.jpg) #151515">
-          <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="" width="86" height="104"/></a>
+          <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="" width="1550" height="1088"/></a>
         
           </div>
           <div class="section-fullheight">
@@ -78,12 +78,9 @@
                       <h1 class="title text-decorative">АЛЬФАГРАД</h1>
                       <h3 class="">{{base_level.title}}</h3>
                       
-                 
-                      
-            
                       <p class="big-2 text-white-darken"> {{ base_level.description|truncatechars:"500" }}</p>
                       {% if base_level.description %}
-                      <a href="{% url 'about_us' %}"><p>чатать дальше</p></a>
+                      <a href="{% url 'about_us' %}"><p>читать дальше</p></a>
                       {% endif %}
                     </div>
                   </div>
@@ -92,26 +89,24 @@
             </div>
           </div>
           <ul class="project-list">
-            <li class="bg-image" style="background-image: url(../{{base_level.first_picture}})"><a href="#"><h1>{{ base_level.first_text }}</h1></a></li>
-            <li class="bg-image" style="background-image: url(../{{base_level.second_picture}})"><a href="#"><h1>{{ base_level.second_text }}</h1></a></li>
-            <li class="bg-image" style="background-image: url(../{{base_level.third_picture}})"><a href="#"><h1>{{ base_level.third_text }}</h1></a></li>
+            <li class="bg-image" style="background-image: url(../{{base_level.first_picture}})"><a href="#"><h2>{{ base_level.first_text }}</h2></a></li>
+            <li class="bg-image" style="background-image: url(../{{base_level.second_picture}})"><a href="#"><h2>{{ base_level.second_text }}</h2></a></li>
+            <li class="bg-image" style="background-image: url(../{{base_level.third_picture}})"><a href="#"><h2>{{ base_level.third_text }}</h2></a></li>
           </ul>
-          
         </section>
-        
       </section>
       <!-- Portfolio-->
       <section class="section section-lg bg-default section-lined">
         <div class="container container-custom-width">
-          <h2 class="text-center">Наши последнии проэкты</h2>
+          <h2 class="text-center">Наши последние  проэкты</h2>
           {% if objs %}
           <div class="row row-custom-width row-30 row-xxl-100 row-flex">
             {% for obj in objs %}
             <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0.2s">
-              <div class="project-grid" style="background-image: url(../{{obj.img}});">
-                <div class="inner"><img src="../{{obj.img}}" alt=""/>
+              <div class="project-grid" width="518" height="373" style="background-image: url(../{{obj.img}});">
+                <div class="inner">
                   <h5 class="title text-capitalize font-weight-medium"><a href="../view/{{obj.title}}"></a>{{ obj.title }}</h5>
-                  <p class="font-weight-regular exeption">{{obj.content|truncatechars:"75"}}</p><a class="button button-default" href="../view/{{obj.title}}">Посмотреть</a>
+                  <p class="font-weight-regular exeption">{{obj.content|truncatechars:"100"}}</p><a class="button button-default" href="../view/{{obj.title}}">Посмотреть</a>
                 </div>
               </div>
             </div>
@@ -147,13 +142,13 @@
               {% if contact.phone %}
               <dl class="list-terms-custom">
                 <dt>Тел. </dt>
-                <dd><a class="link-default" href="tel:#">{{contact.phone}}</a></dd>
+                <dd><a class="link-default" href="tel:{{contact.phone}}">{{contact.phone}}</a></dd>
               </dl>
               {% endif %}
               {% if contact.email %}
               <dl class="list-terms-custom">
                 <dt>Email.</dt>
-                <dd><a class="link-default" href="mailto:#">{{contact.email}}</a></dd>
+                <dd><a class="link-default" href="mailto:{{contact.email}}">{{contact.email}}</a></dd>
               </dl>
               {% endif %}
               {% endfor %}
@@ -185,17 +180,13 @@
               <ul class="list-inline list-inline-lg text-uppercase">
                 <li><a href="{{about_us_url}}">Про нас</a></li>
                 <li><a href="{% url 'all_projects' %}">Наши проэкты</a></li>
-                <!-- <li><a href="#">Blog</a></li> -->
               </ul>
             </div>
           </div>
         </div>
       </footer>
-    </div>
-    <div class="snackbars" id="form-output-global"></div>
     <script src="{% static '/js/core.min.js'%}"></script>
     <script src="{% static '/js/script.js'%}"></script>
-    <!-- coded by Drel-->
   </body>
 </html>
 
