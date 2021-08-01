@@ -7,7 +7,7 @@ l/
 pf/
 *__pycache__
 
-*migrations/
+#*migrations/
 
 .idea/
 .requirements.txt.swp
