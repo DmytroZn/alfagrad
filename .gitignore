@@ -1,0 +1,17 @@
+alfagrad/alfagrad/__pycache__/*
+alfagrad/main/__pycache__/*
+
+venv
+
+l/
+pf/
+*__pycache__
+
+*migrations/
+
+.idea/
+.requirements.txt.swp
+alfagrad.tar.xz
+
+*.rar
+*.pdf

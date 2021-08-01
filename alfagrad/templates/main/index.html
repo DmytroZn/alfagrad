@@ -6,17 +6,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta name="keywords" content="установка забора, строительство, Киев, киевская область, забор">
+    <!-- <meta http-equiv="Refresh" content="1"> -->
+
     <meta name="description" content="{{description}}">
     <link rel="icon" href="{% static 'images/favicon.ico'%}" type="image/x-icon">
-    <!-- <link rel="canonical" href="https://znaktop.com/" data-baseprotocol="https:" data-basehost="znaktop.com">> -->
-    <link rel="alternate" href="https://znaktop.com/" hreflang="x-default">
-    <!-- <link rel="alternate" href="https://znaktop.com/" hreflang="ru"> -->
+    <!-- <link rel="canonical" href="https://alfagrad.kiev.ua" data-baseprotocol="https:" data-basehost="alfagrad.kiev.ua">> -->
+    <link rel="canonical" href="{{url}}" data-baseprotocol="https:" data-basehost="alfagrad.kiev.ua">
+    <link rel="alternate" href="https://alfagrad.kiev.ua" hreflang="x-default">
+    <!-- <link rel="alternate" href="https://alfagrad.kiev.ua" hreflang="ru"> -->
 
     <meta property="og:title" content="{{title}}">
     <meta property="og:description" content="{{description}}">
     <meta property="og:type" content="website">
-    <!-- <meta property="og:url" content="https://znaktop.com/"> -->
-    <meta property="og:image" content="{% static '/css/images/unnamed.jpg' %}">
+    <!-- <meta property="og:url" content="https://alfagrad.kiev.ua"> -->
+    <meta property="og:image" content="https://alfagrad.kiev.ua/static/images/unnamed.jpg">
 
     <link rel="stylesheet" href="{% static '/css/bootstrap.css'%}">
     <link rel="stylesheet" href="{% static '/css/fonts.css'%}">
@@ -51,7 +54,7 @@
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">Заборы</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">Контакты</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#contact">Контакты</a>
                       </li>
                     </ul>
                   </div>
@@ -63,7 +66,7 @@
         <!-- Preview section-->
         {% block content %}
         <section class="section context-dark section-jumbotron bg-cover" style="background: url(../static/images/bg-image.jpg) #151515">
-          <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="" width="1550" height="1088"/></a>
+          <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="Альфаград" width="1550" height="1088"/></a>
         
           </div>
           <div class="section-fullheight">
@@ -77,11 +80,11 @@
                       
                       <h1 class="title text-decorative">АЛЬФАГРАД</h1>
                       <h3 class="">{{base_level.title}}</h3>
-                      
-                      <p class="big-2 text-white-darken"> {{ base_level.description|truncatechars:"500" }}</p>
-                      {% if base_level.description %}
-                      <a href="{% url 'about_us' %}"><p>читать дальше</p></a>
-                      {% endif %}
+                      <lu>
+                        {% for sub_text in sub_texts %}
+                          <li class="big-2 text-white-darken">{{ sub_text }}</li>
+                        {% endfor %}
+                    </lu>
                     </div>
                   </div>
                 </div>
@@ -105,8 +108,8 @@
             <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0.2s">
               <div class="project-grid" width="518" height="373" style="background-image: url(../{{obj.img}});">
                 <div class="inner">
-                  <h5 class="title text-capitalize font-weight-medium"><a href="../view/{{obj.title}}"></a>{{ obj.title }}</h5>
-                  <p class="font-weight-regular exeption">{{obj.content|truncatechars:"100"}}</p><a class="button button-default" href="../view/{{obj.title}}">Посмотреть</a>
+                  <h5 class="title text-capitalize font-weight-medium">{{ obj.title }}</h5>
+                  <p class="font-weight-regular exeption">{{obj.content|truncatechars:"100"}}</p><a class="button button-default" href="../view/{{obj.slug}}">Посмотреть</a>
                 </div>
               </div>
             </div>
@@ -120,7 +123,7 @@
       </section>
       {% endblock %}
          <div class="pre-footer-classic bg-gray-700 context-dark">
-        <div class="container">
+        <div id="contact" class="container">
           <div class="row row-30 justify-content-lg-between">
             <div class="col-sm-6 col-lg-3 col-xl-3">
               <h5>Местоположение</h5>
@@ -156,7 +159,7 @@
             </div>
             <div class="col-lg-4">
               <h5>Есть вопросы? Пишите</h5>
-              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+              <!-- <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
                 <div class="form-wrap form-wrap-icon">
                   <div class="form-icon mdi mdi-email-outline"></div>
                   <input class="form-input" id="footer-email" type="email" name="email" data-constraints="@Email @Required">
@@ -165,6 +168,16 @@
                 <div class="button-wrap">
                   <button class="button button-default button-invariable" type="submit">Отправить</button>
                 </div>
+              </form> -->
+              <form class="" data-form-output="form-output-global" data-form-type="contact" action="" method="POST" >
+                {% csrf_token %}
+                {% for field in form %}
+                    {{field}}
+                {% endfor %}
+                <div class="button-wrap">
+                  <button class="button button-default button-invariable" type="submit">Отправить</button>
+                </div>
+
               </form>
             </div>
           </div>
@@ -189,4 +202,6 @@
     <script src="{% static '/js/script.js'%}"></script>
   </body>
 </html>
+
+
 

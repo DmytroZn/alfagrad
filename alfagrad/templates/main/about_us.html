@@ -6,7 +6,8 @@
 
 
             <section class="section context-dark section-jumbotron bg-cover" style="background: url(/../static/images/bg-image.jpg) #151515">
-              <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="" width="86" height="104"/></a>
+              <div class="panel-left"><a class="brand" href="{% url 'main' %}"><img class="brand-logo-light" src="{% static 'images/logo-alfa2.png'%}" alt="Альфаград" width="1550" height="1088"/></a>
+
               </div>
                 <div class="section-fullheight">
                   
@@ -14,11 +15,17 @@
                     <div class="container">
                         <h2 class="">АЛЬФАГРАД</h2>
                         <p class="big-2 text-white-darken">{{ base_level.description }}</p>
-                        <div class="row row-custom-width row-30 row-xxl-100 row-flex">
+                        <!-- {% for sub_text in sub_texts %}
+                      
+                      <lu>
+                        <li class="big-2 text-white-darken">{{ sub_text }}</li>
+                      </lu>
+                      {% endfor %} -->
+                        <!-- <div class="row row-custom-width row-30 row-xxl-100 row-flex">
                             <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0.2s">
                                 <img src="/{{objs.img}}" alt="{{objs.title}}"/>
                             </div>
-                        </div>
+                        </div> -->
 
                       <div class="row justify-content-center justify-content-lg-start">
 

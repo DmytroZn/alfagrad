@@ -17,10 +17,31 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
 
+from main.models import LastProjects
+from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import GenericSitemap
+from .sitemaps import StaticViewSitemap
+sitemaps = {
+    'static': StaticViewSitemap,
+    'LastProjects': GenericSitemap(
+        {
+        'queryset': LastProjects.objects.all(),
+        'date_field': 'updated',
+    }, priority=0.9),
+
+    
+}
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
+
     path('', include('main.urls')),
+    path('sitemap.xml', sitemap,
+         {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
     # path('', RedirectView.as_view(url='main', permanent=True)),
     # path('categ/', include('main.urls')),
     

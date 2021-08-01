@@ -267,13 +267,13 @@ mark,
 	line-height: 28px;
 	font-weight: 300;
 	letter-spacing: 0.01em;
-	text-align: justify;
 }
 
 @media (min-width: 1200px) {
 	.big-2 {
 		font-size: 24px;
 		line-height: 34px;
+		text-align: left;
 	}
 }
 
@@ -1560,6 +1560,11 @@ html .group-middle {
 .list-inline > li > .icon {
 	vertical-align: middle;
 }
+
+li {
+	text-align: left;
+}
+
 
 .list-inline-sm {
 	transform: translate3d(0, -10px, 0);
@@ -4229,7 +4234,7 @@ textarea.form-input {
 		font-size: 22px;
 	}
 	.jumbotron-custom-1 .title {
-		font-size: 50px;
+		font-size: 40px;
 	}
 }
 
