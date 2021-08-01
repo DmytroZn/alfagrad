@@ -25,7 +25,7 @@ SECRET_KEY = 'eu+w)yo@hyopczrij_a=s=vnmj!25(n87p1u20yyrujiwhn9^9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []#['104.198.50.170', 'alfagrad.kiev.ua']
+ALLOWED_HOSTS = ['127.0.0.1', '34.71.19.135']#['104.198.50.170', 'alfagrad.kiev.ua']
 
 
 # Application definition
